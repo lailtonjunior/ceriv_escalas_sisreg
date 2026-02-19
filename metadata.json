@@ -1,0 +1,5 @@
+{
+  "name": "Gerador de Escala Ambulatorial SUS",
+  "description": "Sistema administrativo para geração de PDF de escalas ambulatoriais de regulação (SISREG/APAE) com seleção de datas e médicos.",
+  "requestFramePermissions": []
+}
