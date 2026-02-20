@@ -125,7 +125,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ({ formData, setFormData, onAd
   }, [addedDoctors]);
 
   const availableSpecialties = useMemo(() => {
-    let list: string[] = [];
+    let list: string[];
     
     // If doctor is in default data, get their specific list
     if (formData.doctorName && DOCTORS_DATA[formData.doctorName]) {

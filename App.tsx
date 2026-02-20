@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Calendar from './components/Calendar';
 import ScheduleForm from './components/ScheduleForm';
 import PreviewTable from './components/PreviewTable';
@@ -29,13 +29,13 @@ function App() {
     qtyEgress: 0
   });
 
-  // Update reference month string when calendar changes
-  useEffect(() => {
+  const handleMonthChange = (date: Date) => {
+    setCurrentMonth(date);
     setHeaderData(prev => ({
       ...prev,
-      referenceMonth: getMonthYear(currentMonth)
+      referenceMonth: getMonthYear(date)
     }));
-  }, [currentMonth]);
+  };
 
   const toggleDate = (date: Date) => {
     setSelectedDates(prev => {
@@ -210,7 +210,7 @@ function App() {
             <h2 className="text-sm font-bold text-gray-500 uppercase mb-2 pl-1">2. Selecione os dias</h2>
             <Calendar 
               currentMonth={currentMonth}
-              onMonthChange={setCurrentMonth}
+              onMonthChange={handleMonthChange}
               selectedDates={selectedDates}
               onToggleDate={toggleDate}
               onSelectRange={handleRangeSelect}
