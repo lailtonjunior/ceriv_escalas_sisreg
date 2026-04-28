@@ -95,6 +95,12 @@ function App() {
     setEntries(prev => prev.filter(e => e.id !== id));
   };
 
+  const handleUpdateEntry = (id: string, field: 'qtyFirst' | 'qtyReturn' | 'qtyEgress', value: number) => {
+    setEntries(prev => prev.map(entry => 
+      entry.id === id ? { ...entry, [field]: value } : entry
+    ));
+  };
+
   const handleExportPDF = () => {
     generatePDF(entries, headerData);
   };
@@ -257,7 +263,7 @@ function App() {
             </div>
           </div>
 
-          <PreviewTable entries={entries} onRemove={handleRemoveEntry} />
+          <PreviewTable entries={entries} onRemove={handleRemoveEntry} onUpdate={handleUpdateEntry} />
           
           <div className="bg-blue-50 border-l-4 border-brand-blue p-4 rounded-r-md text-sm text-blue-900 shadow-sm">
             <strong>Dica:</strong> Após gerar o PDF, verifique se os dados conferem com o padrão exigido pela regulação. O arquivo será salvo na sua pasta de downloads.
